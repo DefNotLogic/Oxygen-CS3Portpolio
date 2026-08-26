@@ -36,16 +36,6 @@ class Product:
         else:
             print("Not enough stock to remove that amount.")
 
-    def show_all_products(self):
-        if not self.products:
-            print("No products available.")
-            return
-        print("\n --- PRODUCT LIST --- ")
-        print(f"{'No.':< 4}{'Name':< 25}{'Price':< 10}{'Quantity':< 8}")
-        print(" -- " * 50)
-        for index, product in enumerate(self.products, start=1):
-            print(f"{index:< 4}{product.name:< 25}{product.price:< 10}{product.quantity:< 8}")
-
         def search_product(self, name):
             for p in self.products:
                 if p.name.lower() == name.lower():
@@ -54,11 +44,13 @@ class Product:
             print(f"Product '{name}' not found.")
 
 # Create more product objects
+products = []
 product1 = Product("Lucky Me Pancit Canton", 15, 20)
 product2 = Product("Coca-Cola", 25, 15)
 product3 = Product("SkyFlakes", 10, 30)
 product4 = Product("Piattos", 25, 12)
 product5 = Product("Sardines", 30, 10)
+products.extend([product1, product2, product3, product4, product5])
 
 # Display information of all products
 product1.display_info()
@@ -76,9 +68,8 @@ def show_menu():
     print("1. Sell Product")
     print("2. Restock Product")
     print("3. Remove Product")
-    print("4. Show All Products")
-    print("5. Search Product")
-    print("6. Exit")
+    print("4. Search Product")
+    print("5. Exit")
 
 if __name__ == "__main__":
     products = [product1, product2, product3, product4, product5]
@@ -118,13 +109,6 @@ if __name__ == "__main__":
                 print(f"Product '{name}' not found.")
 
         elif choice == "4":
-            print("\n --- PRODUCT LIST --- ")
-            print(f"{'No.':< 4}{'Name':< 25}{'Price':< 10}{'Quantity':< 8}")
-            print(" -- " * 50)
-            for index, product in enumerate(products, start=1):
-                print(f"{index:< 4}{product.name:< 25}{product.price:< 10}{product.quantity:< 8}")
-
-        elif choice == "5":
             name = input("Enter the product name to search: ")
             for product in products:
                 if product.name.lower() == name.lower():
@@ -133,7 +117,7 @@ if __name__ == "__main__":
             else:
                 print(f"Product '{name}' not found.")
 
-        elif choice == "6":
+        elif choice == "5":
             print("Exiting the program.")
             break
 
